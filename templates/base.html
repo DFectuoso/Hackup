@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>Hack ups</title>
+    <link href="/static/style.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+  </head>
+  <body>
+  	<div id="top">
+ 			{% if user %}
+		 	  <span>
+          <strong>{{user.email}}</strong> |
+          <a href="{{logout_url}}">Logout</a>
+        </span>
+			{% else %}
+			  <span>
+          <a style="font-weight: bold;" href="{{login_url}}">Login</a> |
+          <a href="http://signup.hackerdojo.com/upgrade/needaccount">Need an account?</a>
+        </span>
+			{% endif %}
+		</div>
+    <div id="wrapper">
+      <div id="header">
+        <img src="/static/logo.png" style="float: left;" />
+        <h1>Hack ups</h1>
+      </div>
+      <div id="content">
+        {% block content %}{% endblock %}
+      </div>
+    </div>
+  </body>
+</html>

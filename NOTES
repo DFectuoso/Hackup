@@ -1,0 +1,19 @@
+requirements
+============
+-> View upcoming hackups
+-> Create hackup
+-> Confirm assist to a hackup
+-> View confirmed people to the hackup
+
+wishlist
+========
+-> Little profile
+
+model
+=====
+Hackup
+ -user
+ -created
+ -details
+ -address
+ -when
