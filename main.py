@@ -32,22 +32,22 @@ class CommentHandler(webapp.RequestHandler):
     def post(self,id):
        user = users.get_current_user()
        idInt = 0
-    ##   try: 
-       idInt = int(id)
-       hackup = HackUp.get_by_id(idInt)
-       if self.request.get("comment"):
-         comment = Comment(
-            user=user,
-            hackup=hackup,
-            text=self.request.get("comment")
-         )
-         comment.put()
-       if (hackup):
-         self.redirect('/view/' + id)
-       else:
+       try: 
+         idInt = int(id)
+         hackup = HackUp.get_by_id(idInt)
+         if self.request.get("comment"):
+           comment = Comment(
+              user=user,
+              hackup=hackup,
+              text=self.request.get("comment")
+           )
+           comment.put()
+         if (hackup):
+           self.redirect('/view/' + id)
+         else:
+           self.redirect('/')
+       except:
          self.redirect('/')
-##       except:
-  ##       self.redirect('/')
 
 
 class ViewHandler(webapp.RequestHandler):
