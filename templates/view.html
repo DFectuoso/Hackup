@@ -8,16 +8,27 @@
 
   <div id="confirmados">
     {% for confirmado in confirmList %}
-      <div>{{confirmado.user.email}}</div>
+      <div>{{confirmado.user.nickname}}</div>
     {% endfor %}
   </div>
 
   {% if not confirmed %}
-    <div>Si ya confirmaste, porfavor, porfavor porfavoooor no le des click de nuevo 
+    <div>Vas a ir o estas en el evento, confirmalo: 
       <form action="/confirm/{{hackup.key.id}}" method="POST">
         <input type="submit" value="Confirmar"></input>
       </form>
     </div>
    {% endif %}
+   <div id="comment">
+     {% for comment in commentList %}
+       <hr/>
+       <div>Comentario:{{comment.text}}</div>
+       <div>Author:{{comment.user.nickname}}</div>
+     {% endfor %}
+   </div>
+   <form method="POST" action="/comment/{{hackup.key.id}}">
+      Comentario<textarea name="comment"></textarea>
+      <input type="submit" value="Comentar"/>
+   </form>
 </div>
 {% endblock %}
