@@ -3,6 +3,21 @@
 
 <h3>Este es un hackup</h3>
 <div id="hackups">
-  Aqui va la info del hackup
+  <div>Cuando:{{hackup.when}}</div>
+  <div>LABEL QUE TUCIF VA A TRADUCIR, SI NO DEFAULT TO DETAILS:{{hackup.details}}</div>
+
+  <div id="confirmados">
+    {% for confirmado in confirmList %}
+      <div>{{confirmado.user.email}}</div>
+    {% endfor %}
+  </div>
+
+  {% if not confirmed %}
+    <div>Si ya confirmaste, porfavor, porfavor porfavoooor no le des click de nuevo 
+      <form action="/confirm/{{hackup.key.id}}" method="POST">
+        <input type="submit" value="Confirmar"></input>
+      </form>
+    </div>
+   {% endif %}
 </div>
 {% endblock %}

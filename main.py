@@ -18,6 +18,10 @@ class HackUp(db.Model):
     details = db.StringProperty(required=True, multiline=True)
     when = db.DateTimeProperty(auto_now_add=True)
 
+class Confirm(db.Model):
+    user = db.UserProperty(auto_current_user_add=True)
+    hackup = db.ReferenceProperty(HackUp)
+
 # Handlers:
 class ViewHandler(webapp.RequestHandler):
     def get(self,id):
@@ -26,6 +30,8 @@ class ViewHandler(webapp.RequestHandler):
        try: 
          idInt = int(id)
          hackup = HackUp.get_by_id(idInt)
+         confirmList = Confirm.all().filter("hackup =", hackup)
+         confirmed = Confirm.all().filter("hackup =", hackup).filter("user =", user).fetch(100)
          if (hackup):
            self.response.out.write(template.render('templates/view.html', locals()))
          else:
@@ -47,9 +53,22 @@ class CreateHandler(webapp.RequestHandler):
        self.redirect('/')
 
 class ConfirmHandler(webapp.RequestHandler):
-    def post(self, update_id):
+    def post(self, id):
        user = users.get_current_user()
-       self.redirect('/')
+       idInt = 0
+       try:
+         idInt = int(id)
+         hackup = HackUp.get_by_id(idInt)
+         confirm = Confirm.all().filter("hackup =", hackup).filter("user =", user).fetch(100)
+         if(not confirm):
+           confirm = Confirm(hackup=hackup, user=user)
+           confirm.put()
+         if (hackup and confirm):
+           self.redirect('/view/' + id) 
+         else:
+           self.redirect('/')
+       except:
+         self.redirect('/')
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
