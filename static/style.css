@@ -17,7 +17,7 @@ h3 { margin-top: 0px;}
 h4 { margin-bottom: 0px;}
 
 table td { padding-left: 10px; padding-top: 4px;}
-
+form textarea { width: 400px; height: 100px;}
 form div { margin-top: 10px; }
 
 label { display: block; font-size: smaller;}

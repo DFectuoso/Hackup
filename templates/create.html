@@ -3,6 +3,20 @@
 
 <h3>Crear un hackup</h3>
 <div id="hackups">
-  Aqui va la forma de los hackups 
+  <form method="POST">
+    <div>
+      Descripcion:
+      <textarea name="descripcion">
+        En este lugar escribe donde va a ser, de que hora a que hora y una manera de contactarte
+      </textarea>
+    </div>
+    <div>
+      Cuando va a ser: FORMATO (DD/MM/AAAA)
+      <input type="text" name="when"></input>
+    </div>
+    <div>
+      <input type="submit">Crear</input>
+    </div>
+ </form>
 </div>
 {% endblock %}
