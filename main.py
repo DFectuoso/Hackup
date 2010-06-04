@@ -77,7 +77,7 @@ class MainHandler(webapp.RequestHandler):
             logout_url = users.create_logout_url('/')
         else:
             login_url = users.create_login_url('/')
-        hackups = HackUp.all().filter("when >", datetime.datetime.now())
+        hackups = HackUp.all().filter("when >=", datetime.date.today() - datetime.timedelta(days=1))
         self.response.out.write(template.render('templates/main.html', locals()))
     
 def main():
