@@ -24,7 +24,7 @@
     <h3>Comentarios:</h3>
      {% for comment in commentList %}
        <hr/>
-       <div>Comentario:{{comment.text}}</div>
+       <div>Comentario:<pre>{{comment.text}}</pre></div>
        <div>Author:{{comment.user.nickname}}</div>
      {% endfor %}
    </div>

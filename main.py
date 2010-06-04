@@ -35,12 +35,13 @@ class CommentHandler(webapp.RequestHandler):
     ##   try: 
        idInt = int(id)
        hackup = HackUp.get_by_id(idInt)
-       comment = Comment(
-          user=user,
-          hackup=hackup,
-          text=self.request.get("comment")
-       )
-       comment.put()
+       if self.request.get("comment"):
+         comment = Comment(
+            user=user,
+            hackup=hackup,
+            text=self.request.get("comment")
+         )
+         comment.put()
        if (hackup):
          self.redirect('/view/' + id)
        else:
