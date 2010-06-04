@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3>Este es un hackup</h3>
+<h3>hackup</h3>
 <div id="hackups">
-  <div>Cuando:{{hackup.when}}</div>
-  <div>LABEL QUE TUCIF VA A TRADUCIR, SI NO DEFAULT TO DETAILS:{{hackup.details}}</div>
+  <div>Cuando:{{hackup.when|date:"M-d-Y"}}</div>
+  <div>Descripcion:{{hackup.details}}</div>
 
   <div id="confirmados">
+    <h3>Gente confirmada o en el evento:</h3>
     {% for confirmado in confirmList %}
       <div>{{confirmado.user.nickname}}</div>
     {% endfor %}
   </div>
-
   {% if not confirmed %}
+    <hr/>
     <div>Vas a ir o estas en el evento, confirmalo: 
       <form action="/confirm/{{hackup.key.id}}" method="POST">
         <input type="submit" value="Confirmar"></input>
@@ -20,6 +21,7 @@
     </div>
    {% endif %}
    <div id="comment">
+    <h3>Comentarios:</h3>
      {% for comment in commentList %}
        <hr/>
        <div>Comentario:{{comment.text}}</div>

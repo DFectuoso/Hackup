@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h3>Next hackups</h3>
+<h3>Siguientes hackups</h3>
 <div id="hackups">
   {% for hackup in hackups %}
     <hr/>
-    <div>Fecha:{{hackup.when}}</div>
+    <div>Fecha:{{hackup.when|date:"M-d-Y"}}</div>
     <div>Descripcion:{{hackup.details}}</div>
     <div><a href="/view/{{hackup.key.id}}">Ver detalles</a></div>
   {% endfor %}
-  Aqui van a ir los hackups
 </div>
 {% endblock %}
