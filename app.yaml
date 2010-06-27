@@ -13,5 +13,4 @@ handlers:
 - url: /static
   static_dir: static
 - url: .*
-  script: main.py
-  login: required
+  script: main.py  
