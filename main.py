@@ -115,7 +115,7 @@ class ConfirmHandler(webapp.RequestHandler):
 
 CONSUMER_KEY = 'e9n31I0z64dagq3WbErGvA'
 CONSUMER_SECRET = '9hwCupdAKV8EixeNdN3xrxL9RG3X3JTXI0Q520Oyolo'
-CALLBACK = 'http://localhost:8086/callback'
+CALLBACK = 'http://hack-up.appspot.com/callback'
 
 class LoginHandler(webapp.RequestHandler):
 
