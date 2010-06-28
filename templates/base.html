@@ -1,21 +1,23 @@
 <html>
   <head>
-    <title>Hack ups</title>
+    <title>Hackups</title>
     <link href="/static/style.css" type="text/css" rel="stylesheet" />
     <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script language="javascript" type="text/javascript" src="/static/js/jquery-ui.custom.min.js"></script>
+    <link href="/static/pepper-grinder/jquery-ui-1.8.2.custom.css" rel="stylesheet" type="text/css" />
+    {%block scripts%}{%endblock%}
   </head>
   <body>
   	<div id="top">
- 			{% if user %}
+ 			{% if twittername %}
 		 	  <span>
-          <strong>{{user.email}}</strong> |
-          <a href="{{logout_url}}">Logout</a>
+          <strong>Bienvenid@, {{twittername}}!</strong>|
+          <a href="/logout">Cerrar Sesión</a>
           <a href="/create">Crear un nuevo hackup</a>
         </span>
 			{% else %}
 			  <span>
-          <a style="font-weight: bold;" href="{{login_url}}">Login</a> |
-          <a href="http://signup.hackerdojo.com/upgrade/needaccount">Need an account?</a>
+          <a style="font-weight: bold;" href="{{login_url}}">Iniciar sesión</a> 
         </span>
 			{% endif %}
 		</div>

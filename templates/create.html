@@ -1,4 +1,14 @@
 {% extends 'base.html' %}
+{%block scripts%}
+<script type="text/javascript">
+
+    $(function () {
+        $.datepicker.setDefaults({ dateFormat: 'dd/mm/yy' });
+        $("#when").datepicker();
+    });  
+
+</script>
+{%endblock%}
 {% block content %}
 
 <h3>Crear un hackup</h3>
@@ -6,13 +16,13 @@
   <form method="POST">
     <div>
       Descripcion:
-      <textarea name="descripcion">
-        En este lugar escribe donde va a ser, de que hora a que hora y una manera de contactarte
+      <textarea name="descripcion" onclick="this.value='';">
+        En este lugar escribe donde va a ser, de qué hora a qué hora y una manera de contactarte.
       </textarea>
     </div>
     <div>
-      Cuando va a ser: FORMATO (DD/MM/AAAA)
-      <input type="text" name="when"></input>
+      Cuándo va a ser:
+      <input type="text" name="when" id="when"></input>
     </div>
     <div>
       <input type="submit" value="Crear"/>
